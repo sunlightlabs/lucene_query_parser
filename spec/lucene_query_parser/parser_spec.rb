@@ -19,9 +19,14 @@ describe LuceneQueryParser::Parser do
       ]
     end
 
-    it "allows hyphens to be in the middle of a term" do
+    it "allows hyphens to be in the middle or end of a term" do
       should parse("candy-bar twix").as [
         {:term => "candy-bar"},
+        {:term => "twix"}
+      ]
+
+      should parse("candybar-- twix").as [
+        {:term => "candybar--"},
         {:term => "twix"}
       ]
     end
