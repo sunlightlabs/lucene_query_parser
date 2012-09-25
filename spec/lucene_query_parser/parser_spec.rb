@@ -188,7 +188,7 @@ describe LuceneQueryParser::Parser do
       error = parser.error_location("invalid^ query")
       error[:line].should == 1
       error[:column].should == 8
-      error[:message].should =~ /Expected/
+      error[:message].should =~ /Don't know/
     end
   end
 
