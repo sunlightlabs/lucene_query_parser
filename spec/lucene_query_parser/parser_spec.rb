@@ -31,6 +31,23 @@ describe LuceneQueryParser::Parser do
       ]
     end
 
+    it "at least allows wildcard terms/phrases to be recognized" do
+      should parse("candy* twix").as [
+        {:term => "candy*"},
+        {:term => "twix"}
+      ]
+
+      should parse("ca*dy twix").as [
+        {:term => "ca*dy"},
+        {:term => "twix"}
+      ]
+
+      should parse("*andy twix").as [
+        {:term => "*andy"},
+        {:term => "twix"}
+      ]
+    end
+
     it "parses a phrase and two terms" do
       should parse(%q("foo bar" isn't one)).as [
         {:phrase => "foo bar"},

@@ -40,7 +40,7 @@ module LuceneQueryParser
     end
 
     rule :term do
-      match["\\w\\-'"].repeat(1).as(:term) >> (fuzzy | boost).maybe
+      match["\\w\\-*'"].repeat(1).as(:term) >> (fuzzy | boost).maybe
     end
 
     rule :phrase do
