@@ -5,9 +5,9 @@ require "lucene_query_parser/version"
 Gem::Specification.new do |s|
   s.name        = "lucene_query_parser"
   s.version     = LuceneQueryParser::VERSION
-  s.authors     = ["Nathan Witmer"]
-  s.email       = ["nwitmer@gmail.com"]
-  s.homepage    = "https://github.com/aniero/lucene_query_parser"
+  s.authors     = ["Nathan Witmer", "Eric Mill"]
+  s.email       = ["nwitmer@gmail.com", "eric@sunlightfoundation.com"]
+  s.homepage    = "https://github.com/sunlightlabs/lucene_query_parser"
   s.summary     = %q{Lucene query parser and syntax checker}
   s.description = %q{Parser class and syntax checking script for validating Lucene queries}
 
