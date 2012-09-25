@@ -13,9 +13,16 @@ describe LuceneQueryParser::Parser do
     end
 
     it "parses a term and a phrase" do
-      parse(%q(foo "stuff and things")).as [
+      should parse(%q(foo "stuff and things")).as [
         {:term => "foo"},
         {:phrase => "stuff and things"}
+      ]
+    end
+
+    it "allows hyphens to be in the middle of a term" do
+      should parse("candy-bar twix").as [
+        {:term => "candy-bar"},
+        {:term => "twix"}
       ]
     end
 
@@ -80,10 +87,6 @@ describe LuceneQueryParser::Parser do
 
     it "ignores trailing spaces" do
       should parse("foo bar   ").as [{:term => "foo"}, {:term => "bar"}]
-    end
-
-    it "ignores trailing spaces" do
-
     end
 
     it "parses AND groupings" do
