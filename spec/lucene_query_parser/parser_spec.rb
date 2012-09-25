@@ -47,9 +47,9 @@ describe LuceneQueryParser::Parser do
         {:term => "twix"}
       ]
 
-      should parse("\"candy* twix\"").as [
-        {:phrase => "candy* twix"},
-      ]
+      should parse("\"candy* twix\"").as({
+        :phrase => "candy* twix",
+      })
     end
 
     it "parses a phrase and two terms" do
