@@ -131,6 +131,18 @@ describe LuceneQueryParser::Parser do
       ]
     end
 
+    it "parses grouped ORs" do
+      should parse(%q(foo AND (bar OR baz) AND mumble OR truth)).as [
+        {:term => "foo"},
+        {:op => "AND", :group => [
+          {:term => "bar"},
+          {:op => "OR", :term => "baz"}
+        ]},
+        {:op => "AND", :term => "mumble"},
+        {:op => "OR", :term => "truth"}
+      ]
+    end
+
     it "parses NOTs" do
       should parse("foo NOT bar").as [
         {:term => "foo"},
